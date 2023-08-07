@@ -1,3 +1,4 @@
+import 'package:budget_tracker_app/views/components/helper/Helper.dart';
 import 'package:budget_tracker_app/views/screens/page1.dart';
 import 'package:budget_tracker_app/views/screens/page2.dart';
 import 'package:budget_tracker_app/views/screens/page3.dart';
@@ -17,11 +18,14 @@ class _HomePageState extends State<HomePage> {
   List<Widget> allPages = [Page1(),Page2(),Page3(),];
 
   int selectedIndex = 0;
+
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     pageController = PageController(initialPage: selectedIndex,keepPage: true);
+    DbHelper.dbHelper.initDb();
   }
   @override
   Widget build(BuildContext context) {
@@ -33,9 +37,6 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             selectedIndex = val;
 
-
-
-
           });
         },
 
@@ -45,7 +46,9 @@ class _HomePageState extends State<HomePage> {
         selectedIndex: selectedIndex,
           onDestinationSelected: (val){
             setState(() {
+
               selectedIndex = val;
+              pageController.animateToPage(selectedIndex, duration: Duration(milliseconds: 10), curve: Curves.linear);
             });
           },
           destinations: [
