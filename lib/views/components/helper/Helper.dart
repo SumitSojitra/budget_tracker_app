@@ -1,3 +1,4 @@
+import 'package:budget_tracker_app/models/budgetModel.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -7,7 +8,7 @@ class DbHelper extends GetxController{
 
   static DbHelper dbHelper = DbHelper._();
 static Database? db;
-  void initDb()async{
+  Future initDb()async{
     String dbPath = await getDatabasesPath();
     String path = await join(dbPath,"budgetdb.db");
     print("=========================");
@@ -22,6 +23,10 @@ static Database? db;
     print("dbjd");
     print("=========================");
 
+  }
+  Future<int?> addCategory({required BudgetModel db})async{
+    await initDb();
+    String
   }
 
 
