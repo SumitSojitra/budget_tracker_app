@@ -24,9 +24,12 @@ static Database? db;
     print("=========================");
 
   }
-  Future<int?> addCategory({required BudgetModel db})async{
+  Future<int?> addCategory({required BudgetModel model})async{
     await initDb();
-    String
+    String query = "INSERT INTO budget(category_name,category_image) VALUES (?,?);";
+    List arg = [model.category_name,model.category_image];
+    int? res = await db?.rawInsert(query,arg);
+    return res;
   }
 
 
