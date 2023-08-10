@@ -32,5 +32,13 @@ static Database? db;
     return res;
   }
 
+  FetchAllCategory()async{
+    await initDb();
+
+    String query = "SELECT * FROM budget;";
+    List<Map<String,dynamic>>? res = await db?.rawQuery(query);
+
+    List<BudgetModel> alldata = res!.map((e) => BudgetModel.sql(data: e)).toList();
+  }
 
 }
