@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
           },
           destinations: [
         NavigationDestination(icon: Icon(CupertinoIcons.home), label: "Home"),
-        NavigationDestination(icon: Icon(CupertinoIcons.settings), label: "Settings"),
+        NavigationDestination(icon: Icon(Icons.category_outlined), label: "category"),
         NavigationDestination(icon: Icon(CupertinoIcons.phone), label: "Calls"),
       ]),
     );
